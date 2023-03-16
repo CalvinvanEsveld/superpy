@@ -1,0 +1,126 @@
+                                                                                        ---INVENTORY SYSTEM USAGE GUIDE---
+
+The csv files bought.csv, report.csv and sold.csv will be created in your directory with headers if they do not exist yet.
+
+Make sure the cursor in each file is at the beginning of the next empty line.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-BUYING A PRODUCT-
+
+Now we can buy our first product with this command.
+python main.py buy --id 1 --product_name apple --count 1 --buy_date 2023-03-07 --buy_price 0.60 --expiration_date 2023-03-17
+
+Lets break this command down into smaller parts and let me explain.
+
+-First we start with python main.py. This command will tell the system that we're working with the main.py file.
+-The action we want to take which is buying a product with the argument buy.
+-The product ID number --id 1
+-Then we add the name with the argument --product_name apple
+-How many we bought --count 1
+-The date on which we purchased the product --buy_date 2023-03-07
+-The price we bought the product for --buy_price 0.60
+-And then as last we add the expiration date of the product --expiration_date 2023-03-17
+
+The system will check if the product ID already exists in the database. If not, it will add the product to the csv file bought.csv and report.csv. Like this:
+
+bought.csv
+id,product_name,count,buy_date,buy_price,expiration_date
+1,apple,1,2023-03-07,0.60,2023-03-17
+
+report.csv
+id,product_name,count,buy_price,expiration_date
+1,apple,1,0.60,2023-03-17
+
+Now you will see a table of report.csv in your terminal with the first product added.
+
+Everytime you want to see the inventory report, you can use this command: python main.py report
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-SELLING A PRODUCT-
+
+Lets sell our first product with this command:
+
+python main.py sell --id 1 --sell_date 2023-03-10 --sell_price 1.20
+
+Lets break this command down into smaller parts and explain.
+
+-First we start with python main.py. This command will tell the system that we're working with the main.py file.
+-The action we want to take which is selling a product with the argument sell.
+-The product ID number which we want to sell.
+-The date on which the product was sold.
+-The price the product was sold for.
+
+If the product is not in stock, you will get the message: Product not in stock
+
+If the product is in stock, the product will be removed from report.csv and added to sold.csv
+
+NOTE: If the product you wanted to sell expired and you try to sell it, you will get the message: Product is expired! The product will then be removed from report.csv and will NOT be added to sold.csv.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-REPORT INVENTORY-
+
+If we want to see the inventory report we can use this command:
+
+python main.py report
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-ADVANCE TIME-
+
+The action advance-time let's you advance time by one or two days. All products sold on that day will not be shown in report.csv. The rest of the csv files will remain the same at all time.
+
+Lets advance time with this command:
+python main.py advance-time --day 1
+
+-First we start with python main.py. This command will tell the system that we're working with the main.py file.
+-The action we want to take which is advancing time with the argument advance-time.
+-How many day/days we want to advance time, in this example one day --day 1
+
+It will then show us a table of report.csv of that day.
+
+NOTE: Afer every advance time action you need to use the action report to reset the system.
+
+e.g. after you advanced time by one day you first need to use the command: python main.py report before advancing time again.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-EXPORTING DATA FROM INVENTORY-
+
+To export data from report.csv to another csv file you use the command:
+
+python main.py export-data --source (which is the path of your report.csv) --destination (which is the csv file where you want the data to be exported to) --product_name bread
+
+You can export data based on a product name. In the example command we used bread.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-REVENUE-
+
+If we want to know the revenue made today, yesterday or in a specific month of a year, we can use the following commands:
+
+python main.py report-revenue --period today
+python main.py report-revenue --period yesterday
+python main.py report-revenue --period 2023-03
+
+-First we start with python main.py. This command will tell the system that we're working with the main.py file.
+-The action we want to take which is showing the revenue with the argument report-revenue
+-If we want to know the revenue made today, yesterday or in a specific month of a year.
+
+If we use the command with --period YYYY-MM, you will see a graph poppin up.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-PROFIT-
+
+If we want to know the profit made today, yesterday or in a specific month of a year, we can use the following commands:
+
+python main.py report-profit --period today
+python main.py report-profit --period yesterday
+python main.py report-profit --period 2023-03
+
+-First we start with python main.py. This command will tell the system that we're working with the main.py file.
+-The action we want to take which is showing the profit with the argument report-profit
+-If we want to know the profit made today, yesterday or in a specific month of a year.
+
+If we use the command with --period YYYY-MM, you will see a graph poppin up.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-PROFIT AND REVENUE-
+
+If you want to see a graph with both profit and revenue made in a specific month of a year, you can use this command:
+
+python main.py profit-revenue --period 2023-03
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
