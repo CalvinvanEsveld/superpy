@@ -7,13 +7,13 @@ Make sure the cursor in each file is at the beginning of the next empty line.
 -BUYING A PRODUCT-
 
 Now we can buy our first product with this command.
-python main.py buy --id 1 --product_name apple --count 1 --buy_date 2023-03-07 --buy_price 0.60 --expiration_date 2023-03-17
+python main.py buy --product_name apple --count 1 --buy_date 2023-03-07 --buy_price 0.60 --expiration_date 2023-03-17
 
 Lets break this command down into smaller parts and let me explain.
 
 -First we start with python main.py. This command will tell the system that we're working with the main.py file.
+-The product ID will be created automatically.
 -The action we want to take which is buying a product with the argument buy.
--The product ID number --id 1
 -Then we add the name with the argument --product_name apple
 -How many we bought --count 1
 -The date on which we purchased the product --buy_date 2023-03-07
