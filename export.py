@@ -10,10 +10,7 @@ def export_data(source, destination, condition):
 
     # Filter the data based on the condition
     export_data = [row for row in data if condition in row[1]]
-
-    
     report = ['id','product_name','count','buy_price','expiration_date']
-
 
     # Open the destination CSV file and write the export data
     with open(destination, 'w', newline='') as destination_file:
