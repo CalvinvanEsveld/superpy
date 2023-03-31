@@ -18,7 +18,7 @@ Lets break this command down into smaller parts and let me explain.
 -How many we bought --count 1
 -The date on which we purchased the product --buy_date 2023-03-07
 -The price we bought the product for --buy_price 0.60
--And then as last we add the expiration date of the product --expiration_date 2023-03-17
+-And then at last we add the expiration date of the product --expiration_date 2023-03-17
 
 The system will check if the product ID already exists in the database. If not, it will add the product to the csv file bought.csv and report.csv. Like this:
 
